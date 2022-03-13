@@ -1,4 +1,4 @@
-export { default as Exprore } from "./Exprore";
+export { default as Explore } from "./Explore";
 export { default as ForgotPassword } from "./ForgotPassword";
 export { default as Offers } from "./Offers";
 export { default as Profile } from "./Profile";
