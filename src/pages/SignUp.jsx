@@ -8,6 +8,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { db } from "../firebase.config";
+import { setDoc, doc, serverTimestamp } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -40,9 +42,15 @@ const SignUp = () => {
       const user = userCredential.user;
 
       updateProfile(auth.currentUser, { displayName: name });
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp();
+
+      await setDoc(doc(db, "users", user.uid), formDataCopy);
+
       navigate("/");
     } catch (error) {
-      console.log(error);
+      toast.error("Somrthing wrong with registration");
     }
   };
 
@@ -100,7 +108,6 @@ const SignUp = () => {
             <ArrowRightIcon fill="#ffffff" width="34px" height="34px" />
           </button>
         </div>
-        
       </form>
 
       {/* Google OAuth */}
