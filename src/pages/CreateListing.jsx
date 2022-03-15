@@ -22,6 +22,7 @@ const CreateListing = () => {
 
   const [loading, setLoading] = useState(false);
 
+  // eslint-disable-next-line
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
 
   const [formData, setFormData] = useState({

@@ -47,7 +47,6 @@ const Listing = () => {
         pagination={{ clickable: true }}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         navigation
-        pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         className="swiper-container"
       >

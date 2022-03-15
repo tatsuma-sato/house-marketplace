@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { db } from "../firebase.config";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -38,6 +37,8 @@ const Slider = () => {
   }, []);
 
   if (loading) return <Spinner />;
+
+  if (listings.length === 0) return <></>;
 
   return (
     listings && (
